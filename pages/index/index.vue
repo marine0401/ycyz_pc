@@ -147,12 +147,12 @@
 					<view class="box1" @click="alarm_set('hPsu','盐度报警',max_alarm)">
 						<view class = "j1"><image class=icon src="../../static/上箭头.png"></image></view>
 						<view class="j2" >盐度高位报警</view>
-						<view class="j3">{{hPsu}}mg/L</view>
+						<view class="j3">{{hPsu}}‰</view>
 					</view>
 					<view class="box1" @click="alarm_set('lPsu','盐度报警',min_alarm)">
 						<view class = "j1"><image class=icon src="../../static/下箭头.png"></image></view>
 						<view class="j2" >盐度低位报警</view>
-						<view class="j3">{{lPsu}}mg/L</view>
+						<view class="j3">{{lPsu}}‰</view>
 					</view>
 					
 					<view class="box2">
@@ -163,12 +163,12 @@
 					<view class="box1" @click="alarm_set('hOrp','ORP报警',max_alarm)">
 						<view class = "j1"><image class=icon src="../../static/上箭头.png"></image></view>
 						<view class="j2" >ORP高位报警</view>
-						<view class="j3">{{hOrp}}mg/L</view>
+						<view class="j3">{{hOrp}}mV</view>
 					</view>
 					<view class="box1" @click="alarm_set('lOrp','ORP报警',min_alarm)">
 						<view class = "j1"><image class=icon src="../../static/下箭头.png"></image></view>
 						<view class="j2" >ORP低位报警</view>
-						<view class="j3">{{lOrp}}mg/L</view>
+						<view class="j3">{{lOrp}}mV</view>
 					</view>
 					
 					<view class="box1" @click="go_set">
@@ -515,10 +515,12 @@ import { Static } from "vue";
 						
 					}
 				}
-				
+				var that = this
 				setTimeout(function() {
-					if(wb != null)
-						XLSX.writeFile(wb,'导出.xlsx')
+					if(wb != null){
+						var str = that.current_device+'.xlsx';
+						XLSX.writeFile(wb,str)
+					}	
 				}, export_attr_count*5000); // 这里的 1000 表示延时的时间，单位是毫秒
 				
 				this.is_export_attr=false
