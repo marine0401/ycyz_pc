@@ -137,7 +137,7 @@
 								localStorage.setItem('token', res.data.symbol);
 								localStorage.setItem('deviceid', res.data.deviceId);
 								localStorage.setItem('userinfo', JSON.stringify(res.data));
-								common.connect(res.data.symbol)
+								
 								uni.navigateTo({
 									url:"/pages/index/index"
 								})

@@ -255,6 +255,7 @@
 		g_temperature
 	} from "../../m_Common/m_common.js"
 	import XLSX from "../../m_Common/xlsx.mini.min.js"
+	import common from '../../m_Common/m_common.js'
 import { Static } from "vue";
 	var wb = XLSX.utils.book_new()
 	var export_attr_count = 0;
@@ -398,6 +399,8 @@ import { Static } from "vue";
 			
 		},
 		onLoad() {
+			
+			common.connect()
 			var data = localStorage.getItem('userinfo')
 			data = JSON.parse(data)
 			this.deviceCount = data.deviceCount
